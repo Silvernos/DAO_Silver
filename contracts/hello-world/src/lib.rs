@@ -85,7 +85,7 @@ pub enum DAOError {
     
 }
 
-// Implement conversion from DAOError to soroban_sdk::Error
+// Implement conversion from DAOError to soroban_sdk::Error to fix errors
 impl From<DAOError> for soroban_sdk::Error {
     fn from(error: DAOError) -> Self {
         soroban_sdk::Error::from_type_and_code(
@@ -95,7 +95,7 @@ impl From<DAOError> for soroban_sdk::Error {
     }
 }
 
-// Implement conversion for references
+// Implement conversion for references to fix errors
 impl<'a> From<&'a DAOError> for soroban_sdk::Error {
     fn from(error: &'a DAOError) -> Self {
         (*error).into()
